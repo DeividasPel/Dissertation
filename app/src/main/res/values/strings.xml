@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PersonalTrainer_Dissertation_15085480</string>
+    <string name="button">Button</string>
+    <string name="log_in">Log In</string>
+    <string name="gender_hint">Select gender</string>
+    <string name="trainer_hint">Select trainer</string>
+    <string name="title_activity_meal_plan">MealPlan</string>
+</resources>
