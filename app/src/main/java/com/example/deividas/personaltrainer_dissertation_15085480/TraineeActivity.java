@@ -13,7 +13,7 @@ public class TraineeActivity extends AppCompatActivity {
     TextView usernameDashboard;
     DatabaseHelper db;
     private String username;
-    RelativeLayout buttonMealPlan, buttonUpdateRecords;
+    RelativeLayout buttonMealPlan, buttonUpdateRecords, buttonMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,18 @@ public class TraineeActivity extends AppCompatActivity {
             }
         });
         //End open records activity
+
+        //Open messages activity
+        buttonMessages = findViewById(R.id.btn_messages);
+        buttonMessages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMessages();
+            }
+        });
+        //End messages activity
+
+
     }
 
     public void openMealPlan(){
