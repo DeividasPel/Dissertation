@@ -33,7 +33,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/username_dashboard"
+                    android:id="@+id/username_dashboard_messages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name Surname"
@@ -78,14 +78,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
+                        android:text="Messages"
                         android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="Change your settings"
+                        android:text="View your messages from trainer"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -107,39 +107,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_name_settings"
+                <ListView
+                    android:id="@+id/lv_messages"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:textStyle="bold"/>
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/et_name_settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:id="@+id/tv_goal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Goal"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    android:paddingTop="10dp"
-                    android:textStyle="bold"/>
-
-                <EditText
-                    android:id="@+id/et_goal_records"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
-
+                </ListView>
 
             </LinearLayout>
 

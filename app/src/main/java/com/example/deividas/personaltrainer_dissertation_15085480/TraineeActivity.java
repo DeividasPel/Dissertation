@@ -68,5 +68,11 @@ public class TraineeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openMessages(){
+        Intent intent = new Intent(this, Messages.class);
+        intent.putExtra("username", username);
+        startActivity(intent);
+    }
+
 }
 

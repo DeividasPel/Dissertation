@@ -9,6 +9,8 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "user2.db";
     public static final String TABLE_NAME = "user_table";
@@ -40,8 +42,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_23 = "DINNER3";
     public static final String COL_24 = "DINNER_NOTES";
 
-    //WEIGHT HISTORY DB
-    public static final String TABLE_NAME_WEIGHT_HISTORY = "weight_history";
+    //MESSAGES DB
+    public static final String TABLE_NAME_MESSAGES = "user_message";
+    public static final String COL_25 = "MESSAGE";
+
+
 
 
     public DatabaseHelper(Context context) {
@@ -51,14 +56,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT) ");
+        db.execSQL("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT) ");
         db.execSQL("Create table " + TABLE_NAME_MEAL_PLAN + "(EMAIL TEXT, BREAKFAST1 TEXT, BREAKFAST2 TEXT, BREAKFAST3 TEXT, BREAKFAST_NOTES TEXT, LUNCH1 TEXT, LUNCH2 TEXT, LUNCH3 TEXT, LUNCH_NOTES TEXT, DINNER1 TEXT, DINNER2 TEXT, DINNER3 TEXT, DINNER_NOTES TEXT)");
+        db.execSQL("Create table " + TABLE_NAME_MESSAGES + "(EMAIL TEXT, MESSAGE TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MEAL_PLAN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MESSAGES);
         onCreate(db);
     }
 
@@ -149,6 +156,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues. put(COL_7, email);
         db.update("user_table", contentValues, "email=?", new String[]{email});
         return true;
+    }
+
+    //insert new message
+    public void insertNewMessage(String email, String message){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_7, email);
+        contentValues.put(COL_25, message);
+        db.insertWithOnConflict(TABLE_NAME_MESSAGES, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+    }
+
+    //delete message (if needed)
+    public void deleteMessage (String message){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_MESSAGES, COL_25 + " - ", new String[]{message});
+        db.close();
+    }
+
+    //get list of messages
+    public ArrayList<String> getMessagesList(String email){
+        ArrayList<String> messageList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from user_message where email=?", new String[]{email});
+        while(cursor.moveToNext()){
+            int index = cursor.getColumnIndex(COL_25);
+            messageList.add(cursor.getString(index));
+        }
+        cursor.close();
+        db.close();
+        return messageList;
     }
 
 }
