@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "user2.db";
+    public static final String DATABASE_NAME = "user3.db";
     public static final String TABLE_NAME = "user_table";
     public static final String COL_1 = "NAME";
     public static final String COL_2 = "SURNAME";
