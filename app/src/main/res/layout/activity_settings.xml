@@ -237,6 +237,7 @@
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
                             android:divider="@drawable/divider_drawable"
                             android:paddingTop="14dp">
 
@@ -267,10 +268,12 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tv_email_settings_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
                             android:divider="@drawable/divider_drawable"
                             android:paddingTop="14dp">
 
@@ -301,10 +304,12 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tv_password_settings_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
                             android:divider="@drawable/divider_drawable"
                             android:paddingTop="14dp">
 
@@ -327,7 +332,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/tv_password"
                                     android:layout_marginTop="6dp"
-                                    android:text="*************"
+                                    android:inputType="textPassword"
                                     android:textColor="@color/black"
                                     android:textSize="12sp" />
 

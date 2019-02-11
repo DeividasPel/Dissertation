@@ -9,26 +9,19 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 
-import java.util.ArrayList;
-
-import me.srodrigo.androidhintspinner.HintAdapter;
-import me.srodrigo.androidhintspinner.HintSpinner;
-
-public class SettingsGenderDialog extends AppCompatDialogFragment{
-    private Spinner editGender;
+public class SettingsEmailDialog extends AppCompatDialogFragment{
+    private EditText editEmail;
     private ExampleDialogListener listener;
-    private ArrayList<String> gender_list = new ArrayList<>();
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.spinner_dialog, null);
+        View view = inflater.inflate(R.layout.layout_dialog, null);
 
-        builder.setView(view).setTitle("Change gender").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+        builder.setView(view).setTitle("Change E-mail").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -37,23 +30,13 @@ public class SettingsGenderDialog extends AppCompatDialogFragment{
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String gender = editGender.getSelectedItem().toString();
-                        listener.applyTextGender(gender);
+                        String email = editEmail.getText().toString();
+                        listener.applyTextEmail(email);
                     }
                 });
 
-        gender_list.add("Male");
-        gender_list.add("Female");
-        gender_list.add("Other");
-        editGender = view.findViewById(R.id.edit_spinner);
-
-        HintSpinner<String> hintSpinner_gender = new HintSpinner<>(editGender, new HintAdapter<>(getActivity(), R.string.trainer_hint, gender_list), new HintSpinner.Callback<String>() {
-            @Override
-            public void onItemSelected(int position, String itemAtPosition) {
-                //
-            }
-        });
-        hintSpinner_gender.init();
+        editEmail = view.findViewById(R.id.edit_textfield);
+        editEmail.setHint("E-mail");
 
         return builder.create();
     }
@@ -70,6 +53,6 @@ public class SettingsGenderDialog extends AppCompatDialogFragment{
     }
 
     public interface ExampleDialogListener {
-        void applyTextGender(String gender);
+        void applyTextEmail(String name);
     }
 }

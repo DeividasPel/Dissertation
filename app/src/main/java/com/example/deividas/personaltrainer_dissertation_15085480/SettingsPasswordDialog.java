@@ -9,26 +9,20 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import me.srodrigo.androidhintspinner.HintAdapter;
-import me.srodrigo.androidhintspinner.HintSpinner;
-
-public class SettingsGenderDialog extends AppCompatDialogFragment{
-    private Spinner editGender;
+public class SettingsPasswordDialog extends AppCompatDialogFragment{
+    private EditText editPassword1, editPassword2;
     private ExampleDialogListener listener;
-    private ArrayList<String> gender_list = new ArrayList<>();
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.spinner_dialog, null);
+        View view = inflater.inflate(R.layout.password_dialog, null);
 
-        builder.setView(view).setTitle("Change gender").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+        builder.setView(view).setTitle("Change Password").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -37,23 +31,19 @@ public class SettingsGenderDialog extends AppCompatDialogFragment{
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String gender = editGender.getSelectedItem().toString();
-                        listener.applyTextGender(gender);
+                        String password1 = editPassword1.getText().toString();
+                        String password2 = editPassword2.getText().toString();
+                        if (password1.equals(password2)){
+                            listener.applyTextPassword(password2);
+                        }
+                        else{
+                            Toast.makeText(getActivity(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
-        gender_list.add("Male");
-        gender_list.add("Female");
-        gender_list.add("Other");
-        editGender = view.findViewById(R.id.edit_spinner);
-
-        HintSpinner<String> hintSpinner_gender = new HintSpinner<>(editGender, new HintAdapter<>(getActivity(), R.string.trainer_hint, gender_list), new HintSpinner.Callback<String>() {
-            @Override
-            public void onItemSelected(int position, String itemAtPosition) {
-                //
-            }
-        });
-        hintSpinner_gender.init();
+        editPassword1 = view.findViewById(R.id.edit_textfield1);
+        editPassword2 = view.findViewById(R.id.edit_textfield2);
 
         return builder.create();
     }
@@ -70,6 +60,6 @@ public class SettingsGenderDialog extends AppCompatDialogFragment{
     }
 
     public interface ExampleDialogListener {
-        void applyTextGender(String gender);
+        void applyTextPassword(String password);
     }
 }

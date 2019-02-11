@@ -153,7 +153,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_9, goal);
         contentValues.put(COL_10, training);
         contentValues.put(COL_11, notes);
-        contentValues. put(COL_7, email);
+        db.update("user_table", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
+    //update settings (for trainee)
+    public boolean updateSettingsTrainee(String name, String settings, String dob, String gender, String newEmail, String password, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, name);
+        contentValues.put(COL_2, settings);
+        contentValues.put(COL_3, dob);
+        contentValues.put(COL_5, gender);
+        contentValues.put(COL_7, newEmail);
+        contentValues.put(COL_8, password);
         db.update("user_table", contentValues, "email=?", new String[]{email});
         return true;
     }
