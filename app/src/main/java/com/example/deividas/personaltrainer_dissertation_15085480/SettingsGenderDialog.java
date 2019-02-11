@@ -47,7 +47,7 @@ public class SettingsGenderDialog extends AppCompatDialogFragment{
         gender_list.add("Other");
         editGender = view.findViewById(R.id.edit_spinner);
 
-        HintSpinner<String> hintSpinner_gender = new HintSpinner<>(editGender, new HintAdapter<>(getActivity(), R.string.trainer_hint, gender_list), new HintSpinner.Callback<String>() {
+        HintSpinner<String> hintSpinner_gender = new HintSpinner<>(editGender, new HintAdapter<>(getActivity(), R.string.gender_hint, gender_list), new HintSpinner.Callback<String>() {
             @Override
             public void onItemSelected(int position, String itemAtPosition) {
                 //

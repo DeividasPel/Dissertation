@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -34,7 +35,7 @@ public class SettingsPasswordDialog extends AppCompatDialogFragment{
                         String password1 = editPassword1.getText().toString();
                         String password2 = editPassword2.getText().toString();
                         if (password1.equals(password2)){
-                            listener.applyTextPassword(password2);
+                            listener.applyTextPassword(password1);
                         }
                         else{
                             Toast.makeText(getActivity(), "Passwords do not match", Toast.LENGTH_SHORT).show();

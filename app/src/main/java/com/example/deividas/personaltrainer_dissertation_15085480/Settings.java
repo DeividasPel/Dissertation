@@ -121,10 +121,7 @@ public class Settings extends AppCompatActivity implements SettingsNameDialog.Ex
                 String newDob = dob.getText().toString();
                 String newGender = gender.getText().toString();
                 String newEmail = email.getText().toString();
-                String newPassword1 = password.toString();
-                Log.d("MyApp",newPassword1);
-                Log.d("MyApp",newEmail);
-                String newPassword = "123456";
+                String newPassword = password.getText().toString();
 
                 Boolean updateSettings = db.updateSettingsTrainee(newName, newSurname, newDob, newGender, newEmail, newPassword, username);
 
