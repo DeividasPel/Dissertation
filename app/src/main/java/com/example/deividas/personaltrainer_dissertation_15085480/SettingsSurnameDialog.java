@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-public class SettingsNameDialog extends AppCompatDialogFragment{
-    private EditText editName;
+public class SettingsSurnameDialog extends AppCompatDialogFragment{
+    private EditText editSurname;
     private ExampleDialogListener listener;
 
     @Override
@@ -21,22 +21,22 @@ public class SettingsNameDialog extends AppCompatDialogFragment{
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.layout_dialog, null);
 
-        builder.setView(view).setTitle("Change name").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        builder.setView(view).setTitle("Change surname").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                })
+            }
+        })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String name = editName.getText().toString();
-                        listener.applyTextName(name);
+                        String surname = editSurname.getText().toString();
+                        listener.applyTextSurname(surname);
                     }
                 });
 
-        editName = view.findViewById(R.id.edit_textfield);
-        editName.setHint("Name");
+        editSurname = view.findViewById(R.id.edit_textfield);
+        editSurname.setHint("Surname");
 
         return builder.create();
     }
@@ -53,6 +53,6 @@ public class SettingsNameDialog extends AppCompatDialogFragment{
     }
 
     public interface ExampleDialogListener {
-        void applyTextName(String name);
+        void applyTextSurname(String surname);
     }
 }

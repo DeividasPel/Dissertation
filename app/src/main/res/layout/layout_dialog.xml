@@ -5,10 +5,10 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/edit_username"
+        android:id="@+id/edit_textfield"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name" />
+        android:hint="Hint" />
 
 
 </RelativeLayout>

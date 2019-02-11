@@ -165,9 +165,9 @@
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
                             android:divider="@drawable/divider_drawable"
-                            android:paddingTop="14dp"
-                            android:foreground="?attr/selectableItemBackground">
+                            android:paddingTop="14dp">
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
@@ -196,11 +196,13 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tv_dob_settings_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
                             android:divider="@drawable/divider_drawable"
+                            android:foreground="?attr/selectableItemBackground"
                             android:paddingTop="14dp">
 
                             <RelativeLayout
@@ -230,6 +232,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tv_gender_settings_button"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:showDividers="end"

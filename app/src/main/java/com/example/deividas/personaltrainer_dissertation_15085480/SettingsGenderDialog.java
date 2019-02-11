@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-public class SettingsNameDialog extends AppCompatDialogFragment{
-    private EditText editName;
+public class SettingsGenderDialog extends AppCompatDialogFragment{
+    private EditText editGender;
     private ExampleDialogListener listener;
 
     @Override
@@ -22,21 +22,21 @@ public class SettingsNameDialog extends AppCompatDialogFragment{
         View view = inflater.inflate(R.layout.layout_dialog, null);
 
         builder.setView(view).setTitle("Change name").setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                })
+            }
+        })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String name = editName.getText().toString();
+                        String name = editGender.getText().toString();
                         listener.applyTextName(name);
                     }
                 });
 
-        editName = view.findViewById(R.id.edit_textfield);
-        editName.setHint("Name");
+        editGender = view.findViewById(R.id.edit_textfield);
+        editGender.setHint("Name");
 
         return builder.create();
     }
