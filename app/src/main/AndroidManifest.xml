@@ -22,7 +22,9 @@
         <activity android:name=".Trainers" />
         <activity android:name=".UpdateRecords" />
         <activity android:name=".Settings" />
-        <activity android:name=".Messages"></activity>
+        <activity android:name=".Messages" />
+        <activity android:name=".Workout" />
+        <activity android:name=".WorkoutDetail"></activity>
     </application>
 
 </manifest>
