@@ -11,11 +11,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Myactivity extends AppCompatActivity implements SensorEventListener {
+public class Myactivity extends AppCompatActivity{
 
-    SensorManager sensorManager;
+
     TextView usernameDashboard, steps;
-    boolean running = false;
     DatabaseHelper db;
     private String username;
 
@@ -27,6 +26,7 @@ public class Myactivity extends AppCompatActivity implements SensorEventListener
 
         //Displaying name on dashboard from DB
         usernameDashboard = findViewById(R.id.username_dashboard);
+        steps = findViewById(R.id.tv_steps);
         db = new DatabaseHelper(this);
         username = getIntent().getStringExtra("username");
         Cursor cursor = db.retrieveData(username);
@@ -36,44 +36,11 @@ public class Myactivity extends AppCompatActivity implements SensorEventListener
         else{
             while(cursor.moveToNext()){
                 usernameDashboard.setText(cursor.getString(1) + " " + cursor.getString(2));
+                steps.setText(cursor.getString(13));
             }
         }
         //End of displaying name from DB
 
-        steps = findViewById(R.id.tv_steps);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (countSensor != null){
-            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        }
-        else{
-            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-        //sensorManager.unregisterListener(this);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (running == true){
-            steps.setText(String.valueOf(event.values[0]));
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 }

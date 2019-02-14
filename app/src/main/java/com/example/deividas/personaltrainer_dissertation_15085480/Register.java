@@ -138,7 +138,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
                     if (str_password1.equals(str_password2)){
                         Boolean check = myDB.checkEmail(str_email);
                         if (check == true){
-                            Boolean insert = myDB.insert(str_name, str_surname, str_dateofbirth, str_height, str_gender, str_weight, str_email, str_password1, str_goal, str_training, str_notes, str_trainer, null, null, null, null, null, null, null, null, null, null, null, null);
+                            Boolean insert = myDB.insert(str_name, str_surname, str_dateofbirth, str_height, str_gender, str_weight, str_email, str_password1, str_goal, str_training, str_notes, str_trainer, null, null, null, null, null, null, null, null, null, null, null, null, "0", "0", "10000");
                             if (insert == true){
                                 Toast.makeText(getApplicationContext(), "Registered successfully", Toast.LENGTH_SHORT).show();
                                 openMain();

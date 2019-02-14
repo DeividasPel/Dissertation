@@ -18,7 +18,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "user3.db";
+    public static final String DATABASE_NAME = "user5.db";
     public static final String TABLE_NAME = "user_table";
     public static final String COL_1 = "NAME";
     public static final String COL_2 = "SURNAME";
@@ -32,6 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_10 = "TRAINING";
     public static final String COL_11 = "NOTES";
     public static final String COL_12 = "TRAINER";
+    public static final String STEPS_TAKEN = "STEPS";
+    public static final String CALORIES_BURNED = "CALORIES";
+    public static final String STEPS_GOAL = "STEPGOAL";
 
     //MEAL PLAN DB
     public static final String TABLE_NAME_MEAL_PLAN = "meal_plan";
@@ -66,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT) ");
+        db.execSQL("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT, STEPS TEXT, CALORIES TEXT, STEPGOAL TEXT) ");
         db.execSQL("Create table " + TABLE_NAME_MEAL_PLAN + "(EMAIL TEXT, BREAKFAST1 TEXT, BREAKFAST2 TEXT, BREAKFAST3 TEXT, BREAKFAST_NOTES TEXT, LUNCH1 TEXT, LUNCH2 TEXT, LUNCH3 TEXT, LUNCH_NOTES TEXT, DINNER1 TEXT, DINNER2 TEXT, DINNER3 TEXT, DINNER_NOTES TEXT)");
         db.execSQL("Create table " + TABLE_NAME_MESSAGES + "(EMAIL TEXT, MESSAGE TEXT)");
     }
@@ -80,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //inserting to DB
-    public boolean insert (String name, String surname, String dob, String height, String gender, String weight, String email, String password, String goal, String training, String notes, String trainer, String breakfast1, String breakfast2, String breakfast3, String breakfast_notes, String lunch1, String lunch2, String lunch3, String lunch_notes, String dinner1, String dinner2, String dinner3, String dinner_notes){
+    public boolean insert (String name, String surname, String dob, String height, String gender, String weight, String email, String password, String goal, String training, String notes, String trainer, String breakfast1, String breakfast2, String breakfast3, String breakfast_notes, String lunch1, String lunch2, String lunch3, String lunch_notes, String dinner1, String dinner2, String dinner3, String dinner_notes, String steps, String calories, String stepGoal){
        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, name);
@@ -95,6 +98,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_10, training);
         contentValues.put(COL_11, notes);
         contentValues.put(COL_12, trainer);
+        contentValues.put(STEPS_TAKEN, steps);
+        contentValues.put(CALORIES_BURNED, calories);
+        contentValues.put(STEPS_GOAL, stepGoal);
         db.insert("user_table", null, contentValues);
 
         ContentValues contentValuesMealPlan = new ContentValues();
@@ -177,6 +183,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_5, gender);
         contentValues.put(COL_7, newEmail);
         contentValues.put(COL_8, password);
+        db.update("user_table", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
+    //update steps counter
+    public boolean updateSteps(String steps, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STEPS_TAKEN, steps);
+        db.update("user_table", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
+    public boolean updateCalories(String calories, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CALORIES_BURNED, calories);
         db.update("user_table", contentValues, "email=?", new String[]{email});
         return true;
     }
