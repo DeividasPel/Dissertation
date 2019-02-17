@@ -40,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                String email_str = email.getText().toString();
                String password_str = password.getText().toString();
-               Boolean check_emailpassword = myDB.checkEmailPassword(email_str, password_str);
-               if (check_emailpassword == true){
+               Boolean check_emailPassword = myDB.checkEmailPassword(email_str, password_str);
+               if (email_str.equals("trainer1@trainer.com") && password_str.equals("123")){
+                   openTrainer1();
+               }
+               else if (check_emailPassword == true){
                    Toast.makeText(getApplicationContext(), "Succesfully logged in", Toast.LENGTH_SHORT).show();
                    openTrainee();
                }
@@ -63,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
     public void openTrainee(){
         Intent intent = new Intent(this, TraineeActivity.class);
         intent.putExtra("username", email.getText().toString());
+        startActivity(intent);
+    }
+
+    public void openTrainer1(){
+        Intent intent = new Intent(this, TrainerList.class);
+        intent.putExtra("trainer", "Arantza Aldea");
         startActivity(intent);
     }
 

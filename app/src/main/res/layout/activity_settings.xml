@@ -345,7 +345,6 @@
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
-                            android:divider="@drawable/divider_drawable"
                             android:paddingTop="14dp">
 
                             <Button

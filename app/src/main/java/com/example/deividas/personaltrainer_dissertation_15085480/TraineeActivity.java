@@ -22,7 +22,7 @@ public class TraineeActivity extends AppCompatActivity implements SensorEventLis
     RelativeLayout buttonMealPlan, buttonUpdateRecords, buttonMessages, buttonSettings, buttonSchedule, buttonActivity;
     SensorManager sensorManager;
     boolean running = false;
-    double weight, height, stepsCount, caloriesBurnedPerMile, strip, stepCountMile, conversationFactor, caloriesBurned, distance;
+    double weight, height, stepsCount, caloriesBurnedPerMile, strip, stepCountMile, conversationFactor, caloriesBurned;
     final double walkingFactor = 0.57;
 
     @Override

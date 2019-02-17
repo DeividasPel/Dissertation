@@ -235,6 +235,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return messageList;
     }
 
+    //get list of trainees
+    public ArrayList<String> getTraineeList(String trainer){
+        ArrayList<String> traineeList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from user_table where trainer=?", new String[]{trainer});
+        while(cursor.moveToNext()){
+            int indexName = cursor.getColumnIndex(COL_1);
+            int indexSurname = cursor.getColumnIndex(COL_2);
+            traineeList.add(cursor.getString(indexName) + " " + cursor.getString(indexSurname));
+        }
+        cursor.close();
+        db.close();
+        return traineeList;
+    }
+
     //List of all workouts JSON file
     public static ArrayList<WorkoutType> loadWorkout(Context context){
         ArrayList<WorkoutType> workouts = new ArrayList<>();

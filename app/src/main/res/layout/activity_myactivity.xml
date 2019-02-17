@@ -79,14 +79,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
+                        android:text="ACTIVITY"
                         android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="Change your settings"
+                        android:text="My activity"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -118,7 +118,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingTop="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,7 +131,8 @@
                             android:layout_height="match_parent"
                             android:showDividers="end"
                             android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:divider="@drawable/divider_drawable">
 
                             <TextView
                                 android:id="@+id/tv_steps_info"
@@ -144,15 +146,18 @@
                                 android:layout_height="wrap_content"
                                 android:text="0"
                                 android:layout_marginTop="10dp"
-                                android:textSize="40sp" />
+                                android:textSize="40sp"
+                                />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:paddingTop="10dp"
                             android:showDividers="end"
                             android:orientation="vertical"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:divider="@drawable/divider_drawable">
 
                             <TextView
                                 android:id="@+id/tv_calories_info"
@@ -167,6 +172,52 @@
                                 android:text="0"
                                 android:layout_marginTop="10dp"
                                 android:textSize="40sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="10dp"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tv_target_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="STEPS TARGET" />
+
+                            <TextView
+                                android:id="@+id/tv_target"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:layout_marginTop="10dp"
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:id="@+id/tv_steps_left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="STEPS TO TARGET - 0"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:paddingTop="60dp">
+
+                            <Button
+                                android:id="@+id/btn_update_settings"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/black"
+                                android:text="ACTIVITY HISTORY"
+                                android:textColor="@color/white" />
                         </LinearLayout>
 
                     </LinearLayout>

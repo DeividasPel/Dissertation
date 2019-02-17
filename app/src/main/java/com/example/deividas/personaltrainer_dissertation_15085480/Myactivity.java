@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class Myactivity extends AppCompatActivity{
 
 
-    TextView usernameDashboard, steps;
+    TextView usernameDashboard, steps, calories, target, stepsToTarget;
     DatabaseHelper db;
     private String username;
 
@@ -27,6 +27,9 @@ public class Myactivity extends AppCompatActivity{
         //Displaying name on dashboard from DB
         usernameDashboard = findViewById(R.id.username_dashboard);
         steps = findViewById(R.id.tv_steps);
+        calories = findViewById(R.id.tv_calories);
+        target = findViewById(R.id.tv_target);
+        stepsToTarget = findViewById(R.id.tv_steps_left);
         db = new DatabaseHelper(this);
         username = getIntent().getStringExtra("username");
         Cursor cursor = db.retrieveData(username);
@@ -36,7 +39,18 @@ public class Myactivity extends AppCompatActivity{
         else{
             while(cursor.moveToNext()){
                 usernameDashboard.setText(cursor.getString(1) + " " + cursor.getString(2));
-                steps.setText(cursor.getString(13));
+                double stepsInteger = Double.parseDouble(cursor.getString(13));
+                double caloriesInteger = Double.parseDouble(cursor.getString(14));
+                steps.setText(String.valueOf((int)stepsInteger));
+                calories.setText(String.valueOf((int)caloriesInteger));
+                target.setText(String.valueOf((int)stepsInteger) + " / " + cursor.getString(15));
+                int stepsLeft = Integer.parseInt(cursor.getString(15)) - (int)stepsInteger;
+                if (stepsLeft > 0){
+                    stepsToTarget.setText("Steps left to target - " + String.valueOf(stepsLeft));
+                }
+                else{
+                    stepsToTarget.setText("YOU HAVE REACHED YOUR GOAL!");
+                }
             }
         }
         //End of displaying name from DB
