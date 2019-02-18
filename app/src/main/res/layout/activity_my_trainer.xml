@@ -28,13 +28,13 @@
                     android:id="@+id/text_dashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MY DASHBOARD"
+                    android:text="TRAINER DASHBOARD"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/username_dashboard"
+                    android:id="@+id/username_dashboard_trainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name Surname"
@@ -83,6 +83,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/tv_trainee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
@@ -129,24 +130,25 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:divider="@drawable/divider_drawable"
-                            android:gravity="center"
+                            android:showDividers="end"
                             android:orientation="vertical"
-                            android:showDividers="end">
+                            android:gravity="center"
+                            android:divider="@drawable/divider_drawable">
 
                             <TextView
                                 android:id="@+id/tv_steps_info"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="STEPS BY TRAINEE" />
+                                android:text="STEPS" />
 
                             <TextView
-                                android:id="@+id/tv_steps"
+                                android:id="@+id/tv_steps_trainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
                                 android:text="0"
-                                android:textSize="40sp" />
+                                android:layout_marginTop="10dp"
+                                android:textSize="40sp"
+                                />
                         </LinearLayout>
 
                         <LinearLayout
@@ -162,10 +164,10 @@
                                 android:id="@+id/tv_calories_info"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="BURNED CALORIES BY TRAINEE" />
+                                android:text="BURNED CALORIES" />
 
                             <TextView
-                                android:id="@+id/tv_calories"
+                                android:id="@+id/tv_calories_trainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
@@ -188,7 +190,7 @@
                                 android:text="STEPS TARGET" />
 
                             <TextView
-                                android:id="@+id/tv_target"
+                                android:id="@+id/tv_target_trainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
@@ -196,7 +198,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
-                                android:id="@+id/tv_steps_left"
+                                android:id="@+id/tv_steps_left_trainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="STEPS TO TARGET - 0"

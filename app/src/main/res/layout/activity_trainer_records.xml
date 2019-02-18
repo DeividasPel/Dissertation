@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/bg_blackblurry">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/text_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TRAINER DASHBOARD"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/username_dashboard_trainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name Surname"
+                    android:layout_below="@+id/text_dashboard"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/unkown"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/unknownimage" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginRight="45dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TRAINEE RECORDS"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_trainee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Name Surname"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="220dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/tv_name_settings_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="NAME"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_name_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_name"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Name"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tv_surname_settings_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_surname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="SURNAME"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_surname_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_surname"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Surname"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tv_dob_settings_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:divider="@drawable/divider_drawable"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_dob"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="DATE OF BIRTH"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_dob_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_dob"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Date of Brith"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tv_gender_settings_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_gender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="GENDER"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_gender_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_gender"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Male"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tv_email_settings_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="E-MAIL"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_email_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_email"
+                                    android:layout_marginTop="6dp"
+                                    android:text="test@test.com"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_height"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="HEIGHT"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_height_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_height"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Height"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_weight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="WEIGHT"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_weight_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_weight"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Weightt"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_goal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="GOAL"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_goal_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_goal"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Goal"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_training"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="TRAINING"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_training_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_training"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Method of training"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:showDividers="end"
+                            android:orientation="vertical"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:divider="@drawable/divider_drawable"
+                            android:paddingTop="14dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_notes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="NOTES"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_notes_records_trainer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_notes"
+                                    android:layout_marginTop="6dp"
+                                    android:text="Notes from trainee"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

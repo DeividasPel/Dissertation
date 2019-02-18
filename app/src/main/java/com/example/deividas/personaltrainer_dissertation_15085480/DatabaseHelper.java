@@ -161,6 +161,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //add meal plan (by trainer)
+    public boolean updateMealPlan(String breakfast1, String breakfast2, String breakfast3, String breakfast_notes, String lunch1, String lunch2, String lunch3, String lunch_notes, String dinner1, String dinner2, String dinner3, String dinner_notes, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_13, breakfast1);
+        contentValues.put(COL_14, breakfast2);
+        contentValues.put(COL_15, breakfast3);
+        contentValues.put(COL_16, breakfast_notes);
+        contentValues.put(COL_17, lunch1);
+        contentValues.put(COL_18, lunch2);
+        contentValues.put(COL_19, lunch3);
+        contentValues.put(COL_20, lunch_notes);
+        contentValues.put(COL_21, dinner1);
+        contentValues.put(COL_22, dinner2);
+        contentValues.put(COL_23, dinner3);
+        contentValues.put(COL_24, dinner_notes);
+        db.update("meal_plan", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
     //update records (for trainee)
     public boolean updateRecordsTrainee(String weight, String goal, String training, String notes, String email){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -244,6 +264,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int indexName = cursor.getColumnIndex(COL_1);
             int indexSurname = cursor.getColumnIndex(COL_2);
             traineeList.add(cursor.getString(indexName) + " " + cursor.getString(indexSurname));
+        }
+        cursor.close();
+        db.close();
+        return traineeList;
+    }
+
+    public ArrayList<String> getTraineeListEmail(String trainer){
+        ArrayList<String> traineeList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from user_table where trainer=?", new String[]{trainer});
+        while(cursor.moveToNext()){
+            int indexEmail = cursor.getColumnIndex(COL_7);
+            traineeList.add(cursor.getString(indexEmail));
         }
         cursor.close();
         db.close();

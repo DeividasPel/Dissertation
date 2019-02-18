@@ -201,7 +201,7 @@
                     android:layout_weight="1">
 
                     <RelativeLayout
-                        android:id="@+id/btn_plan"
+                        android:id="@+id/btn_plan_trainer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.55"
@@ -286,7 +286,7 @@
                     android:layout_weight="1">
 
                     <RelativeLayout
-                        android:id="@+id/btn_messages"
+                        android:id="@+id/btn_messages_trainer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.65"
@@ -324,7 +324,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/btn_settings"
+                        android:id="@+id/btn_progress"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.55"
@@ -354,7 +354,7 @@
                                 android:layout_below="@+id/imgView8"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="5dp"
-                                android:text="Settings"
+                                android:text="Progress"
                                 android:textSize="14sp" />
 
                         </RelativeLayout>

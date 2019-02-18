@@ -65,25 +65,25 @@ public class MealPlan extends AppCompatActivity {
             while (cursor1.moveToNext()){
                 //BREAKFAST
                 if (cursor1.getString(1) == null){
-                    breakfast1.setText("No information");
+                    breakfast1.setText("NO BREAKFAST OPTION 1");
                 }
                 else{
                     breakfast1.setText(cursor1.getString(1));
                 }
                 if (cursor1.getString(2) == null){
-                    breakfast2.setText("No information");
+                    breakfast2.setText("NO BREAKFAST OPTION 2");
                 }
                 else{
                     breakfast2.setText(cursor1.getString(2));
                 }
                 if (cursor1.getString(3) == null){
-                    breakfast3.setText("No information");
+                    breakfast3.setText("NO BREAKFAST OPTION 3");
                 }
                 else{
                     breakfast3.setText(cursor1.getString(3));
                 }
                 if (cursor1.getString(4) == null){
-                    breakfast_notes.setText("No messages for breakfast");
+                    breakfast_notes.setText("NO REMINDERS FOR BREAKFAST");
                 }
                 else{
                     breakfast_notes.setText(cursor1.getString(4));
@@ -91,25 +91,25 @@ public class MealPlan extends AppCompatActivity {
 
                 //LUNCH
                 if (cursor1.getString(5) == null){
-                    lunch1.setText("No information");
+                    lunch1.setText("NO LUNCH OPTION 1");
                 }
                 else{
                     lunch1.setText(cursor1.getString(5));
                 }
                 if (cursor1.getString(6) == null){
-                    lunch2.setText("No information");
+                    lunch2.setText("NO LUNCH OPTION 2");
                 }
                 else{
                     lunch2.setText(cursor1.getString(6));
                 }
                 if (cursor1.getString(7) == null){
-                    lunch3.setText("No information");
+                    lunch3.setText("NO LUNCH OPTION 3");
                 }
                 else{
                     lunch3.setText(cursor1.getString(7));
                 }
                 if (cursor1.getString(8) == null){
-                    lunch_notes.setText("No messages for lunch");
+                    lunch_notes.setText("NO REMINDERS FOR LUNCH");
                 }
                 else{
                     lunch_notes.setText(cursor1.getString(8));
@@ -117,25 +117,25 @@ public class MealPlan extends AppCompatActivity {
 
                 //DINNER
                 if (cursor1.getString(9) == null){
-                    dinner1.setText("No information");
+                    dinner1.setText("NO DINNER OPTION 1");
                 }
                 else{
                     dinner1.setText(cursor1.getString(9));
                 }
                 if (cursor1.getString(10) == null){
-                    dinner2.setText("No information");
+                    dinner2.setText("NO DINNER OPTION 2");
                 }
                 else{
                     dinner2.setText(cursor1.getString(10));
                 }
                 if (cursor1.getString(11) == null){
-                    dinner3.setText("No information");
+                    dinner3.setText("NO DINNER OPTION 3");
                 }
                 else{
                     dinner3.setText(cursor1.getString(11));
                 }
                 if (cursor1.getString(12) == null){
-                    dinner_notes.setText("No messages for dinner");
+                    dinner_notes.setText("NO REMINDERS FOR DINNER");
                 }
                 else{
                     dinner_notes.setText(cursor1.getString(12));

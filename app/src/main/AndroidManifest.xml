@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrainerMessages"></activity>
+        <activity android:name=".TrainerRecords"></activity>
+        <activity android:name=".TrainerMealPlan" />
+        <activity android:name=".MyActivityTrainer" />
+        <activity android:name=".TrainerMessages" />
         <activity android:name=".TrainerActivity" />
         <activity android:name=".TrainerList" />
         <activity android:name=".Myactivity" />
