@@ -11,7 +11,7 @@ public class TrainerActivity extends AppCompatActivity {
     private TextView usernameDashboard, traineeDashboard;
     DatabaseHelper db;
     String trainerName, traineeName, traineeEmail;
-    RelativeLayout buttonMessages, buttonActivity, btnMealPlans, btnRecords, btnWorkout;
+    RelativeLayout buttonMessages, buttonActivity, btnMealPlans, btnRecords, btnWorkout, btnProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +68,18 @@ public class TrainerActivity extends AppCompatActivity {
                 openTrainerWorkouts();
             }
         });
+
+        btnProgress = findViewById(R.id.btn_progress);
+        btnProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTrainerProgress();
+            }
+        });
     }
 
     public void openTrainerWorkouts(){
-        Intent intent = new Intent(this, TrainerWorkout.class);
+        Intent intent = new Intent(this, TrainerWorkoutSelection.class);
         intent.putExtra("trainer", trainerName);
         intent.putExtra("trainee", traineeName);
         intent.putExtra("traineeEmail", traineeEmail);
@@ -105,6 +113,14 @@ public class TrainerActivity extends AppCompatActivity {
 
     public void openTrainerMessages(){
         Intent intent = new Intent(this, TrainerMessages.class);
+        intent.putExtra("trainer", trainerName);
+        intent.putExtra("trainee", traineeName);
+        intent.putExtra("traineeEmail", traineeEmail);
+        startActivity(intent);
+    }
+
+    public void openTrainerProgress(){
+        Intent intent = new Intent(this, TrainerProgress.class);
         intent.putExtra("trainer", trainerName);
         intent.putExtra("trainee", traineeName);
         intent.putExtra("traineeEmail", traineeEmail);

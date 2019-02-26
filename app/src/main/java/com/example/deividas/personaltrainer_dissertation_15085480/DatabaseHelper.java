@@ -235,6 +235,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public void deleteAllWorkouts(String email)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from user_workouts where email=?", new String[]{email});
+        db.close();
+    }
+
     public boolean updateMealStatus(String mealStatus, String email){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
