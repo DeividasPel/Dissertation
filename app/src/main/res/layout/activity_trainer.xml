@@ -155,7 +155,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/btn_schedule"
+                        android:id="@+id/btn_workout_trainer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.55"
@@ -239,7 +239,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/btn_update"
+                        android:id="@+id/btn_update_trainer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.65"

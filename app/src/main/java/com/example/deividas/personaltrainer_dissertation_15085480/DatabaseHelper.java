@@ -5,9 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
-import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +15,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "user5.db";
+    public static final String DATABASE_NAME = "user7.db";
     public static final String TABLE_NAME = "user_table";
     public static final String COL_1 = "NAME";
     public static final String COL_2 = "SURNAME";
@@ -35,6 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String STEPS_TAKEN = "STEPS";
     public static final String CALORIES_BURNED = "CALORIES";
     public static final String STEPS_GOAL = "STEPGOAL";
+    public static final String WORKOUT_STATUS = "WORKOUT_STATUS"; //0 NOT FINISHED - 1 FINISHED
+    public static final String MEAL_STATUS = "MEAL_STATUS"; //0 NOT FINISHED - 1 FINISHED
 
     //MEAL PLAN DB
     public static final String TABLE_NAME_MEAL_PLAN = "meal_plan";
@@ -69,9 +68,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT, STEPS TEXT, CALORIES TEXT, STEPGOAL TEXT) ");
+        db.execSQL("Create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, DOB TEXT, HEIGHT TEXT, GENDER TEXT, WEIGHT TEXT, EMAIL TEXT, PASSWORD TEXT, GOAL TEXT, TRAINING TEXT, NOTES TEXT, TRAINER TEXT, STEPS TEXT, CALORIES TEXT, STEPGOAL TEXT, WORKOUT_STATUS TEXT, MEAL_STATUS TEXT) ");
         db.execSQL("Create table " + TABLE_NAME_MEAL_PLAN + "(EMAIL TEXT, BREAKFAST1 TEXT, BREAKFAST2 TEXT, BREAKFAST3 TEXT, BREAKFAST_NOTES TEXT, LUNCH1 TEXT, LUNCH2 TEXT, LUNCH3 TEXT, LUNCH_NOTES TEXT, DINNER1 TEXT, DINNER2 TEXT, DINNER3 TEXT, DINNER_NOTES TEXT)");
         db.execSQL("Create table " + TABLE_NAME_MESSAGES + "(EMAIL TEXT, MESSAGE TEXT)");
+        db.execSQL("Create table " + TABLE_NAME_WORKOUTS + "(EMAIL TEXT, WORKOUT TEXT)");
     }
 
     @Override
@@ -79,11 +79,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MEAL_PLAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_MESSAGES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_WORKOUTS);
         onCreate(db);
     }
 
     //inserting to DB
-    public boolean insert (String name, String surname, String dob, String height, String gender, String weight, String email, String password, String goal, String training, String notes, String trainer, String breakfast1, String breakfast2, String breakfast3, String breakfast_notes, String lunch1, String lunch2, String lunch3, String lunch_notes, String dinner1, String dinner2, String dinner3, String dinner_notes, String steps, String calories, String stepGoal){
+    public boolean insert (String name, String surname, String dob, String height, String gender, String weight, String email, String password, String goal, String training, String notes, String trainer, String breakfast1, String breakfast2, String breakfast3, String breakfast_notes, String lunch1, String lunch2, String lunch3, String lunch_notes, String dinner1, String dinner2, String dinner3, String dinner_notes, String steps, String calories, String stepGoal, String workoutStatus, String mealStatus){
        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, name);
@@ -101,6 +102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(STEPS_TAKEN, steps);
         contentValues.put(CALORIES_BURNED, calories);
         contentValues.put(STEPS_GOAL, stepGoal);
+        contentValues.put(WORKOUT_STATUS, workoutStatus);
+        contentValues.put(MEAL_STATUS, mealStatus);
         db.insert("user_table", null, contentValues);
 
         ContentValues contentValuesMealPlan = new ContentValues();
@@ -224,6 +227,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean updateWorkoutStatus(String workoutStatus, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(WORKOUT_STATUS, workoutStatus);
+        db.update("user_table", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
+    public boolean updateMealStatus(String mealStatus, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MEAL_STATUS, mealStatus);
+        db.update("user_table", contentValues, "email=?", new String[]{email});
+        return true;
+    }
+
     //insert new message
     public void insertNewMessage(String email, String message){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -232,6 +251,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_25, message);
         db.insertWithOnConflict(TABLE_NAME_MESSAGES, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
+    }
+
+    //insert new message
+    public void insertNewWorkout(String email, String workout){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_7, email);
+        contentValues.put(COL_26, workout);
+        db.insertWithOnConflict(TABLE_NAME_WORKOUTS, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
+    }
+
+    //get workouts
+    public ArrayList<String> getWorkoutsList(String email){
+        ArrayList<String> workoutList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from user_workouts where email=?", new String[]{email});
+        while(cursor.moveToNext()){
+            int index = cursor.getColumnIndex(COL_26);
+            workoutList.add(cursor.getString(index));
+        }
+        cursor.close();
+        db.close();
+        return workoutList;
     }
 
     //delete message (if needed)

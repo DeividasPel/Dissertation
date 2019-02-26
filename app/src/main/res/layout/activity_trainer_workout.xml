@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,10 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/ll_dash"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/bg_blackblurry">
@@ -28,18 +28,18 @@
                     android:id="@+id/text_dashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MY DASHBOARD"
+                    android:text="TRAINER DASHBOARD"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/username_dashboard"
+                    android:id="@+id/username_dashboard_trainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name Surname"
                     android:layout_below="@+id/text_dashboard"
                     android:layout_marginTop="6dp"
+                    android:text="Name Surname"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
 
@@ -84,10 +84,11 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/tv_trainee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:text="Today's workout"
+                        android:text="Provide workout"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -95,6 +96,7 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
+
 
         <LinearLayout
             android:id="@+id/ll_listview"
@@ -105,7 +107,7 @@
             android:padding="10dp">
 
             <ListView
-                android:id="@+id/lv_workouts"
+                android:id="@+id/lv_workout_trainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -113,7 +115,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/btn_workout_finished"
+                android:id="@+id/btn_workouts_trainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -121,14 +123,13 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@color/black"
-                android:text="WORKOUT FINISHED!"
+                android:text="UPDATE WORKOUTS"
                 android:layout_below="@id/ll_listview"
                 android:textColor="@color/white"/>
 
-
-
         </LinearLayout>
+
 
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

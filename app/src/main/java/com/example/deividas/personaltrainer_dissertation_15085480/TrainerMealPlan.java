@@ -184,6 +184,7 @@ public class TrainerMealPlan extends AppCompatActivity {
                     getDinnerNotes = "NO REMINDERS FOR DINNER";
                 }
                 db.updateMealPlan(getBreakfast1, getBreakfast2, getBreakfast3, getBreakfastNotes, getLunch1, getLunch2, getLunch3, getLunchNotes, getDinner1, getDinner2, getDinner3, getDinnerNotes, traineeEmail);
+                db.updateMealStatus("0", traineeEmail);
                 Toast.makeText(getApplicationContext(), "Meal plan updated successfully", Toast.LENGTH_SHORT).show();
             }
         });

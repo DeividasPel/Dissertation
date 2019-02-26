@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ public class MealPlan extends AppCompatActivity {
     TextView dinner2;
     TextView dinner3;
     TextView dinner_notes;
+
+    Button btnFollowed;
 
 
     @Override
@@ -143,5 +147,14 @@ public class MealPlan extends AppCompatActivity {
             }
         }
         //End of meals display
+
+        btnFollowed = findViewById(R.id.btn_meals_finished);
+        btnFollowed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.updateMealStatus("1", username);
+                Toast.makeText(getApplicationContext(),"Plan followed. Well done!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
