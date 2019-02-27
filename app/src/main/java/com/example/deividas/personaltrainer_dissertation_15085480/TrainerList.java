@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ public class TrainerList extends AppCompatActivity {
     private TextView usernameDashboard, emptyList;
     DatabaseHelper db;
     String trainerName, traineeName, traineeEmail;
+    Button checkProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +56,28 @@ public class TrainerList extends AppCompatActivity {
             });
         }
 
+        checkProgress = findViewById(R.id.btn_check_progress);
+        checkProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProgressActivity();
+            }
+        });
+
 
 
     }
 
     public void openTrainerActivity(){
         Intent intent = new Intent(this, TrainerActivity.class);
+        intent.putExtra("trainer", trainerName);
+        intent.putExtra("trainee", traineeName);
+        intent.putExtra("traineeEmail", traineeEmail);
+        startActivity(intent);
+    }
+
+    public void openProgressActivity(){
+        Intent intent = new Intent(this, AllTraineeProgres.class);
         intent.putExtra("trainer", trainerName);
         intent.putExtra("trainee", traineeName);
         intent.putExtra("traineeEmail", traineeEmail);
